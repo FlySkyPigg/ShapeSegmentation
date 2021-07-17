@@ -1,3 +1,6 @@
 [submodule "Pointnet2_PyTorch"]
 	path = Pointnet2_PyTorch
 	url = https://github.com/erikwijmans/Pointnet2_PyTorch
+[submodule "Pointnet_Pointnet2_pytorch"]
+	path = Pointnet_Pointnet2_pytorch
+	url = https://github.com/yanx27/Pointnet_Pointnet2_pytorch

@@ -23,7 +23,7 @@ def pc_normalize(pc):
 
 
 class ShapeNetPartSeg(data.Dataset):
-    def __init__(self, num_points, data_root=None, transforms=None, split='train', download=True):
+    def __init__(self, num_points, data_root=None, transforms=None, split='train', download=True, categories=None):
         self.transforms = transforms
         self.num_points = num_points
         self.split = split
@@ -146,6 +146,13 @@ class ShapeNetPartSeg(data.Dataset):
             with open(filename, 'rb') as f:
                 self.points, self.points_labels, self.labels = pickle.load(f)
             print(f"{filename} loaded successfully")
+
+        # sucheng: filter data given category id.
+        cat_labels = [self.name_to_label[cat_name] for cat_name in categories]
+        indices = [i for i, label in enumerate(self.labels) if label in cat_labels]
+        self.points = [self.points[idx] for idx in indices]
+        self.points_labels = [self.points_labels[idx] for idx in indices]
+        self.labels = [self.labels[idx] for idx in indices]
 
         print(f"split:{split} had {len(self.points)} data")
 
