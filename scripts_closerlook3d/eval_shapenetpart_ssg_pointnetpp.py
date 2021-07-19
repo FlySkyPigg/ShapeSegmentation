@@ -12,13 +12,12 @@ And therefore we need to compute the semantic confusion matrix for each object.
 from datasets.ShapeNetPart import ShapeNetPartSeg
 import argparse
 from torch.utils.data import DataLoader
-from models.pointnet2_part_seg_ssg import get_model, get_loss
+from models.pointnet2_part_seg_ssg import get_model
 import torch
 import os
 import numpy as np
 from sklearn.metrics import confusion_matrix
 from tqdm import tqdm
-
 
 parser = argparse.ArgumentParser('ShapeNetPart part-segmentation training')
 parser.add_argument('--data_root', type=str, default='data', metavar='PATH', help='root director of dataset')
